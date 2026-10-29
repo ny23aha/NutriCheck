@@ -117,32 +117,55 @@
 
                 <!-- Botón Menú Hamburguesa (Móvil / Pantallas Pequeñas) -->
                 <div class="flex items-center gap-3 lg:hidden">
-                    <!-- Selector de idioma móvil -->
                     <select id="langSelectMobile" onchange="changeLanguage(this.value)" class="bg-gray-50 border border-gray-300 text-gray-700 text-xs font-semibold rounded-lg block px-2 py-1.5 outline-none">
                         <option value="es" selected>🇪🇸 ES</option>
                         <option value="en">🇬🇧 EN</option>
                     </select>
 
-                    <button id="hamburgerBtn" onclick="toggleMobileMenu()" class="p-2 text-gray-700 hover:text-brand-800 focus:outline-none">
+                    <button id="hamburgerBtn" onclick="toggleMobileMenu()" class="p-2 text-gray-800 hover:text-brand-800 focus:outline-none">
                         <i id="hamburgerIcon" class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Menú Desplegable Móvil -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <a href="#hero" onclick="toggleMobileMenu()" id="nav-home-m" class="block py-2 text-base font-semibold text-gray-900 hover:text-brand-800">Inicio</a>
-            <a href="#story" onclick="toggleMobileMenu()" id="nav-story-m" class="block py-2 text-base font-medium text-gray-600 hover:text-brand-800">Nuestra Historia</a>
-            <a href="#cards" onclick="toggleMobileMenu()" id="nav-habits-m" class="block py-2 text-base font-medium text-gray-600 hover:text-brand-800">Hábitos</a>
-            <a href="#team" onclick="toggleMobileMenu()" id="nav-team-m" class="block py-2 text-base font-medium text-gray-600 hover:text-brand-800">Nuestro Equipo</a>
-            <a href="#history" onclick="toggleMobileMenu()" id="nav-history-m" class="block py-2 text-base font-medium text-gray-600 hover:text-brand-800">Trayectoria</a>
-            
-            <div class="pt-4 border-t border-gray-100 flex flex-col gap-2">
-                <button onclick="openModal('signInModal'); toggleMobileMenu()" id="btn-signin-m" class="w-full text-center px-4 py-2.5 border border-brand-800 text-sm font-medium rounded-md text-brand-800">
+        <!-- Menú Desplegable Estilo Personalizado (Oscuro con Íconos) -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-brand-deep text-white w-full border-t border-brand-800 shadow-2xl transition-all">
+            <!-- Encabezado del menú -->
+            <div class="px-6 py-4 border-b border-brand-800/60 flex justify-between items-center">
+                <span id="mobile-menu-title" class="text-lg font-semibold tracking-wide">Menú</span>
+            </div>
+
+            <!-- Lista de opciones con íconos y separadores -->
+            <nav class="flex flex-col">
+                <a href="#hero" onclick="toggleMobileMenu()" id="nav-home-m" class="px-6 py-3.5 border-b border-brand-800/50 hover:bg-brand-900/50 flex items-center gap-4 text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-house w-5 text-center text-brand-200"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="#story" onclick="toggleMobileMenu()" id="nav-story-m" class="px-6 py-3.5 border-b border-brand-800/50 hover:bg-brand-900/50 flex items-center gap-4 text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-book-open w-5 text-center text-brand-200"></i>
+                    <span>Nuestra Historia</span>
+                </a>
+                <a href="#cards" onclick="toggleMobileMenu()" id="nav-habits-m" class="px-6 py-3.5 border-b border-brand-800/50 hover:bg-brand-900/50 flex items-center gap-4 text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-apple-whole w-5 text-center text-brand-200"></i>
+                    <span>Hábitos</span>
+                </a>
+                <a href="#team" onclick="toggleMobileMenu()" id="nav-team-m" class="px-6 py-3.5 border-b border-brand-800/50 hover:bg-brand-900/50 flex items-center gap-4 text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-user-group w-5 text-center text-brand-200"></i>
+                    <span>Nuestro Equipo</span>
+                </a>
+                <a href="#history" onclick="toggleMobileMenu()" id="nav-history-m" class="px-6 py-3.5 border-b border-brand-800/50 hover:bg-brand-900/50 flex items-center gap-4 text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-timeline w-5 text-center text-brand-200"></i>
+                    <span>Trayectoria</span>
+                </a>
+            </nav>
+
+            <!-- Acciones de inicio de sesión -->
+            <div class="p-6 flex flex-col gap-3 bg-brand-900/30">
+                <button onclick="openModal('signInModal'); toggleMobileMenu()" id="btn-signin-m" class="w-full text-center px-4 py-2.5 border border-brand-200 text-sm font-medium rounded-md text-brand-50 hover:bg-brand-800 transition-colors">
                     Iniciar Sesión
                 </button>
-                <button onclick="openModal('signUpModal'); toggleMobileMenu()" id="btn-signup-m" class="w-full text-center px-5 py-2.5 text-sm font-medium rounded-md text-white bg-brand-800">
+                <button onclick="openModal('signUpModal'); toggleMobileMenu()" id="btn-signup-m" class="w-full text-center px-5 py-2.5 text-sm font-medium rounded-md text-gray-900 bg-brand-200 hover:bg-white transition-colors">
                     Prueba Gratis
                 </button>
             </div>
@@ -530,6 +553,7 @@
     <script>
         const translations = {
             es: {
+                mobileMenuTitle: "Menú",
                 navHome: "Inicio", navStory: "Nuestra Historia", navHabits: "Hábitos", navTeam: "Nuestro Equipo", navHistory: "Trayectoria",
                 btnSignin: "Iniciar Sesión", btnSignup: "Prueba Gratis",
                 heroTitle1: "Piensa en positivo sobre tu", heroTitle2: "Nutrición",
@@ -546,6 +570,7 @@
                 footerDesc: "Promoviendo una vida saludable mediante seguimiento nutricional científico y orientación personalizada.", toastSuccess: "Acción completada con éxito."
             },
             en: {
+                mobileMenuTitle: "Menu",
                 navHome: "Home", navStory: "Our Story", navHabits: "Habits", navTeam: "Our Team", navHistory: "History",
                 btnSignin: "Sign In", btnSignup: "Start Free Trial",
                 heroTitle1: "Think positive about our", heroTitle2: "Nutrition",
@@ -599,17 +624,19 @@
             document.getElementById('langSelect').value = lang;
             document.getElementById('langSelectMobile').value = lang;
 
+            document.getElementById('mobile-menu-title').innerText = t.mobileMenuTitle;
+
             document.getElementById('nav-home').innerText = t.navHome;
             document.getElementById('nav-story').innerText = t.navStory;
             document.getElementById('nav-habits').innerText = t.navHabits;
             document.getElementById('nav-team').innerText = t.navTeam;
             document.getElementById('nav-history').innerText = t.navHistory;
 
-            document.getElementById('nav-home-m').innerText = t.navHome;
-            document.getElementById('nav-story-m').innerText = t.navStory;
-            document.getElementById('nav-habits-m').innerText = t.navHabits;
-            document.getElementById('nav-team-m').innerText = t.navTeam;
-            document.getElementById('nav-history-m').innerText = t.navHistory;
+            document.getElementById('nav-home-m').querySelector('span').innerText = t.navHome;
+            document.getElementById('nav-story-m').querySelector('span').innerText = t.navStory;
+            document.getElementById('nav-habits-m').querySelector('span').innerText = t.navHabits;
+            document.getElementById('nav-team-m').querySelector('span').innerText = t.navTeam;
+            document.getElementById('nav-history-m').querySelector('span').innerText = t.navHistory;
 
             document.getElementById('btn-signin').innerText = t.btnSignin;
             document.getElementById('btn-signup').innerText = t.btnSignup;
